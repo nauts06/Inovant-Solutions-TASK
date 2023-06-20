@@ -9,8 +9,12 @@ module.exports = router;
 //Post Method
 router.post("/post", async (req, res) => {
   const data = new Model({
-    email: req.body.email,
-    password: req.body.password,
+    name: req.body.name,
+    price: req.body.price,
+    addImages1: req.body.addImages1,
+    addImages2: req.body.addImages2,
+    addImages3: req.body.addImages3,
+    addImages4: req.body.addImages4,
   });
 
   try {

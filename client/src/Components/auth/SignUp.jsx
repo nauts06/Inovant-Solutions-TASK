@@ -10,22 +10,62 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
-
+  let editId = useParams();
+  const [first, setFdata] = useState(false);
   const [image, setImage] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const [image4, setImage4] = useState("");
 
-  // let initialValues = {
+  let initialValues = {
+    name: "",
+    price: "",
 
-  // };
+    addImages1: "",
+    addImages2: "",
+    addImages3: "",
+    addImages4: "",
+  };
 
-  // let setImage = []
+  console.log("editId", first);
 
-  const handleImage = (event) => {
+  const handleEditSet = async () => {
+    await axios
+      .get(`http://localhost:9000/api/getOne/${editId.id}`)
+      .then((response) => {
+        setFdata(true);
+        initialValues.addImages1 = response?.data?.addImages1;
+        initialValues.addImages2 = response?.data?.addImages2;
+        initialValues.addImages3 = response?.data?.addImages3;
+        initialValues.addImages4 = response?.data?.addImages4;
+        initialValues.name = response?.data?.name;
+        initialValues.price = response?.data?.price;
+        setImage(response?.data?.addImages1);
+        setImage2(response?.data?.addImages2);
+        setImage3(response?.data?.addImages3);
+        setImage4(response?.data?.addImages4);
+        console.log("Editresponse", response.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
+  useEffect(() => {
+    handleEditSet();
+    console.log(first);
+  }, []);
+
+  useEffect(() => {
+     setTimeout(() => {
+      // setFdata(false);
+    }, "1000");
+  }, []);
+
+  const handleImage = (event, setFieldValue) => {
     const preset_key = "hrzxc8tv";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -43,12 +83,13 @@ const SignUp = () => {
         // console.log("responnse", res.data.secure_url);
         // setImage();
         setImage(res.data.secure_url);
+        setFieldValue("addImages1", res.data.secure_url);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const handleImage2 = (event) => {
+  const handleImage2 = (event, setFieldValue) => {
     const preset_key = "gyq8juvu";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -66,13 +107,14 @@ const SignUp = () => {
         // console.log("responnse", res.data.secure_url);
         // setImage();
         setImage2(res.data.secure_url);
+        setFieldValue("addImages2", res.data.secure_url);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleImage3 = (event) => {
+  const handleImage3 = (event, setFieldValue) => {
     const preset_key = "h2f3sheq";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -90,12 +132,13 @@ const SignUp = () => {
         // console.log("responnse", res.data.secure_url);
         // setImage();
         setImage3(res.data.secure_url);
+        setFieldValue("addImages3", res.data.secure_url);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const handleImage4 = (event) => {
+  const handleImage4 = (event, setFieldValue) => {
     const preset_key = "swmqmwpy";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -113,6 +156,7 @@ const SignUp = () => {
         // console.log("responnse", res.data.secure_url);
         // setImage();
         setImage4(res.data.secure_url);
+        setFieldValue("addImages4", res.data.secure_url);
       })
       .catch((error) => {
         console.log(error);
@@ -127,12 +171,12 @@ const SignUp = () => {
       <div className="card w-[90%]  bg-base-100 shadow-xl m-auto">
         <div className="card-body">
           <div className="flex justify-end ">
-            <a
-              className="btn btn-neutral  w-[10%] justify-end "
-              onClick={() => navigate("/signin")}
+            <button
+              className="btn btn-neutral  w-[10%]"
+              onClick={() => navigate("/")}
             >
               Cancel
-            </a>
+            </button>
           </div>
 
           {/* <form onSubmit={formik.handleSubmit}> */}
@@ -141,43 +185,34 @@ const SignUp = () => {
               <Formik
                 // enableReinitialize={true}
                 // validateOnChange={true}
-                initialValues={{
-                  name: "",
-                  price: "",
-                  // addImages: "",
-                  addImages: [
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                  ],
-                }}
+                initialValues={initialValues}
                 onSubmit={(values) => {
                   // console.log("valuesField", values);
 
-                  const data = {
-                    name: values.name,
-                    price: values.price,
-                    image: values.addImages,
-                  };
-
-                  // axios
-                  //   .post("http://localhost:5000/user", data)
-                  //   .then((response) => {
-                  //     console.log("valueskk", response);
-                  //     navigate("/");
-                  //   })
-                  //   .catch((error) => {
-                  //     console.log("error", error);
-                  //   });
+                  if (first === false) {
+                    axios
+                      .post("http://localhost:9000/api/post", values)
+                      .then((response) => {
+                        console.log("valueskk", response);
+                        navigate("/");
+                      })
+                      .catch((error) => {
+                        console.log("error", error);
+                      });
+                  } else {
+                    axios
+                      .patch(
+                        `http://localhost:9000/api/update/${editId.id}`,
+                        values
+                      )
+                      .then((response) => {
+                        console.log("editres", response);
+                        navigate("/");
+                      })
+                      .catch((error) => {
+                        console.log("error", error);
+                      });
+                  }
                 }}
                 render={({
                   setValues,
@@ -220,32 +255,40 @@ const SignUp = () => {
                         <Grid item xs={12} md={3}>
                           <TextField
                             type="file"
-                            name="addImages"
-                            onChange={handleImage}
-                            // defaultValue={values.addImages}
+                            name="addImages1"
+                            onChange={(event) =>
+                              handleImage(event, setFieldValue)
+                            }
+                            // defaultValue={values?.addImages1}
                           />
                           <Grid className="mt-4">
                             <TextField
                               type="file"
-                              name="addImages"
-                              onChange={handleImage2}
-                              // defaultValue={values.addImages}
+                              name="addImages2"
+                              onChange={(event) =>
+                                handleImage2(event, setFieldValue)
+                              }
+                              // value={values.addImages2}
                             />
                           </Grid>
                           <Grid className="mt-4">
                             <TextField
                               type="file"
-                              name="addImages"
-                              onChange={handleImage3}
-                              // defaultValue={values.addImages}
+                              name="addImages3"
+                              onChange={(event) =>
+                                handleImage3(event, setFieldValue)
+                              }
+                              // value={values.addImages3}
                             />
                           </Grid>
                           <Grid className="mt-4">
                             <TextField
                               type="file"
-                              name="addImages"
-                              onChange={handleImage4}
-                              // defaultValue={values.addImages}
+                              name="addImages4"
+                              onChange={(event) =>
+                                handleImage4(event, setFieldValue)
+                              }
+                              // value={values.addImages4}
                             />
                           </Grid>
                         </Grid>

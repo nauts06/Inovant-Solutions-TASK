@@ -72,7 +72,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="signup">
+          <Link to="signup/:id">
             <a className="btn">Add Product Here</a>
           </Link>
         </div>
