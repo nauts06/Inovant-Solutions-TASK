@@ -62,13 +62,6 @@ const SignUp = () => {
           {/* <div className="card-actions justify-end">
       <button className="btn btn-primary">Buy Now</button>
     </div> */}
-    <div className="flex justify-end "> <a
-            className="btn btn-neutral  w-[10%] justify-end "
-            onClick={() => navigate("/signin")}
-          >
-            Cancel
-          </a></div>
-         
 
           {/* <form onSubmit={formik.handleSubmit}> */}
           <div className="mt-[2%]  text-center">
@@ -76,24 +69,11 @@ const SignUp = () => {
               <Formik
                 // enableReinitialize={true}
                 // validateOnChange={true}
-                initialValues={{
-                  name: "",
-                  price: "",
-                  addImages: [
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                    {
-                      images: "",
-                    },
-                  ],
-                }}
+                initialValues={{ name: "", price: "", addImages: [
+                  {
+                    images:""
+                  }
+                ] }}
                 onSubmit={(values) => {
                   console.log("valuesField", values);
 
@@ -152,10 +132,12 @@ const SignUp = () => {
                             name="name"
                             onChange={handleChange}
                             value={values.name}
+                            
                           />
                         </Grid>
-
+                       
                         <Grid item xs={12} md={3}>
+                          
                           <TextField
                             fullWidth
                             required
@@ -170,13 +152,7 @@ const SignUp = () => {
 
                         {/* -------------------------------------without fieldarray code till here------------------------------------------------ */}
 
-                        <Grid
-                          item
-                          xs={12}
-                          md={6}
-                          style={{ display: "flex", gap: "5%" }}
-                        >
-                          <label>Add Product Images</label>
+                        <Grid item xs={12} md={6}>
                           <FieldArray
                             name="addImages"
                             render={(arrayHelpers) => (
@@ -185,7 +161,7 @@ const SignUp = () => {
                                 values.addImages.length > 0 ? (
                                   values.addImages.map((friend, index) => (
                                     <div key={index}>
-                                      <TextField
+                                      <input
                                         type="file"
                                         name={`addImages.${index}.images`}
                                         onChange={(event) =>
@@ -195,7 +171,7 @@ const SignUp = () => {
                                           )
                                         }
                                       />
-                                      {/* <Button
+                                      <Button
                                         variant="contained"
                                         color="info"
                                         size="small"
@@ -205,8 +181,8 @@ const SignUp = () => {
                                         } // remove a friend from the list
                                       >
                                         -
-                                      </Button> */}
-                                      {/* <Button
+                                      </Button>
+                                      <Button
                                         variant="contained"
                                         color="info"
                                         size="small"
@@ -216,12 +192,18 @@ const SignUp = () => {
                                         } // insert an empty string at a position
                                       >
                                         +
-                                      </Button> */}
+                                      </Button>
                                     </div>
                                   ))
                                 ) : (
+
+
+
+
+                                  
                                   <button
-                                    fullWidth
+                                  fullWidth
+                                    className="btn btn-outline"
                                     type="button"
                                     onClick={() => arrayHelpers.push("")}
                                   >
@@ -263,6 +245,13 @@ const SignUp = () => {
                   );
                 }}
               />
+
+              <a
+                className="btn btn-neutral"
+                onClick={() => navigate("/signin")}
+              >
+                already registred click here
+              </a>
             </div>
           </div>
         </div>

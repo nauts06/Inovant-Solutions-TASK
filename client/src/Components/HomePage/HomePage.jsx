@@ -12,13 +12,15 @@ const HomePage = () => {
 
       {/* -------------------------navbar end here--------------------- */}
 
-      <h1>This is the home page</h1>
+      {/* <h1>This is the home page</h1>
       <Link to="singup">
         <button className="btn btn-neutral">Sing-Up</button>
       </Link>
       <Link to="signin">
         <button className="btn btn-neutral">Sing-In</button>
-      </Link>
+      </Link> */}
+
+
     </div>
   );
 };

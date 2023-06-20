@@ -144,7 +144,6 @@ const Crud = () => {
                   <th>Email</th>
                   <th>Password</th>
                   <th>Edit</th>
-
                   <th>Delete</th>
                 </tr>
               </thead>
