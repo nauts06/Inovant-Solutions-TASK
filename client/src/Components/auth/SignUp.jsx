@@ -13,42 +13,111 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
+
+  const [image, setImage] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
+
   // let initialValues = {
 
   // };
 
-  // const formik = useFormik({
-  //   enableReinitialize: true,
-  //   initialValues: {
-  //     username: "",
-  //     mobileNo: "",
-  //     email: "",
-  //     password: "",
-  //   },
-  //   onSubmit: (values) => {
-  //     console.log("asdfghjk", values);
+  // let setImage = []
 
-  //     // const data ={
-  //     //   email:values.email,
-  //     //   mobileNo:values.mobileNo,
-  //     //   password:values.password,
-  //     //   username:values.username,
-  //     //   role:"user"
-  //     // }
-  //     // axios
-  //     //   .post("http://localhost:5000/api/users/register", data)
-  //     //   .then((response) => {
-  //     //     console.log("valueskk", response);
-  //     //     navigate("/signin")
+  const handleImage = (event) => {
+    const preset_key = "hrzxc8tv";
+    const cloud_name = "dwgp5uejr";
+    console.log("asdfghj", event.target.files[0]);
 
-  //     //   })
-  //     //   .catch((error) => {
-  //     //     console.log("error", error);
-  //     //   });
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset_key);
+    axios
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+      .then((res) => {
+        // console.log("responnse", res.data.secure_url);
+        // setImage();
+        setImage(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleImage2 = (event) => {
+    const preset_key = "gyq8juvu";
+    const cloud_name = "dwgp5uejr";
+    console.log("asdfghj", event.target.files[0]);
 
-  //     console.log("values", values);
-  //   },
-  // });
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset_key);
+    axios
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+      .then((res) => {
+        // console.log("responnse", res.data.secure_url);
+        // setImage();
+        setImage2(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleImage3 = (event) => {
+    const preset_key = "h2f3sheq";
+    const cloud_name = "dwgp5uejr";
+    console.log("asdfghj", event.target.files[0]);
+
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset_key);
+    axios
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+      .then((res) => {
+        // console.log("responnse", res.data.secure_url);
+        // setImage();
+        setImage3(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleImage4 = (event) => {
+    const preset_key = "swmqmwpy";
+    const cloud_name = "dwgp5uejr";
+    console.log("asdfghj", event.target.files[0]);
+
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset_key);
+    axios
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+      .then((res) => {
+        // console.log("responnse", res.data.secure_url);
+        // setImage();
+        setImage4(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="bg-neutral h-screen">
       <div className="text-[34px] text-center text-base-100 ">
@@ -57,18 +126,14 @@ const SignUp = () => {
 
       <div className="card w-[90%]  bg-base-100 shadow-xl m-auto">
         <div className="card-body">
-          {/* <h2 className="card-title">Shoes!</h2> */}
-
-          {/* <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div> */}
-    <div className="flex justify-end "> <a
-            className="btn btn-neutral  w-[10%] justify-end "
-            onClick={() => navigate("/signin")}
-          >
-            Cancel
-          </a></div>
-         
+          <div className="flex justify-end ">
+            <a
+              className="btn btn-neutral  w-[10%] justify-end "
+              onClick={() => navigate("/signin")}
+            >
+              Cancel
+            </a>
+          </div>
 
           {/* <form onSubmit={formik.handleSubmit}> */}
           <div className="mt-[2%]  text-center">
@@ -79,6 +144,7 @@ const SignUp = () => {
                 initialValues={{
                   name: "",
                   price: "",
+                  // addImages: "",
                   addImages: [
                     {
                       images: "",
@@ -95,35 +161,19 @@ const SignUp = () => {
                   ],
                 }}
                 onSubmit={(values) => {
-                  console.log("valuesField", values);
+                  // console.log("valuesField", values);
 
-                  // const data = {
-                  //   role: "admin",
-                  //   name: values.name,
-                  //   email: values.email,
-                  //   biography: values.biography,
-                  //   // specialization: tags,
-                  //   address: values.address,
-                  //   videoType: values.videoType,
-                  //   education: values.addImages,
-                  //   experience: values.experience,
-                  //   additionalWork: values.additionalWork,
-                  // };
+                  const data = {
+                    name: values.name,
+                    price: values.price,
+                    image: values.addImages,
+                  };
 
                   // axios
-                  //   .post("http://localhost:4000/api/admin/accounts", data, {
-                  //     headers: {
-                  //       Authorization:
-                  //         "Bearer " + JSON.parse(localStorage.getItem("token")),
-                  //     },
-                  //   })
+                  //   .post("http://localhost:5000/user", data)
                   //   .then((response) => {
-                  //     console.log("dataAccounts", response.status);
-                  //     if (response.status !== 200) {
-                  //       alert(`Unable to save this data!`);
-                  //     } else {
-                  //       alert(`Details Saved!`);
-                  //     }
+                  //     console.log("valueskk", response);
+                  //     navigate("/");
                   //   })
                   //   .catch((error) => {
                   //     console.log("error", error);
@@ -167,10 +217,48 @@ const SignUp = () => {
                             value={values.price}
                           />
                         </Grid>
+                        <Grid item xs={12} md={3}>
+                          <TextField
+                            type="file"
+                            name="addImages"
+                            onChange={handleImage}
+                            // defaultValue={values.addImages}
+                          />
+                          <Grid className="mt-4">
+                            <TextField
+                              type="file"
+                              name="addImages"
+                              onChange={handleImage2}
+                              // defaultValue={values.addImages}
+                            />
+                          </Grid>
+                          <Grid className="mt-4">
+                            <TextField
+                              type="file"
+                              name="addImages"
+                              onChange={handleImage3}
+                              // defaultValue={values.addImages}
+                            />
+                          </Grid>
+                          <Grid className="mt-4">
+                            <TextField
+                              type="file"
+                              name="addImages"
+                              onChange={handleImage4}
+                              // defaultValue={values.addImages}
+                            />
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                          <img src={image} alt="" className="w-[30%]" />
+                          <img src={image2} alt="" className="w-[30%]  mt-1" />
+                          <img src={image3} alt="" className="w-[30%]  mt-1" />
+                          <img src={image4} alt="" className="w-[30%]  mt-1" />
+                        </Grid>
 
                         {/* -------------------------------------without fieldarray code till here------------------------------------------------ */}
 
-                        <Grid
+                        {/* <Grid
                           item
                           xs={12}
                           md={6}
@@ -187,36 +275,11 @@ const SignUp = () => {
                                     <div key={index}>
                                       <TextField
                                         type="file"
-                                        name={`addImages.${index}.images`}
-                                        onChange={(event) =>
-                                          setFieldValue(
-                                            `addImages.${index}.images`,
-                                            event.target.files[0]
-                                          )
-                                        }
+                                        name={`addImages.${index}`}
+                                        onChange={handleImage}
                                       />
-                                      {/* <Button
-                                        variant="contained"
-                                        color="info"
-                                        size="small"
-                                        type="button"
-                                        onClick={() =>
-                                          arrayHelpers.remove(index)
-                                        } // remove a friend from the list
-                                      >
-                                        -
-                                      </Button> */}
-                                      {/* <Button
-                                        variant="contained"
-                                        color="info"
-                                        size="small"
-                                        type="button"
-                                        onClick={() =>
-                                          arrayHelpers.insert(index, "")
-                                        } // insert an empty string at a position
-                                      >
-                                        +
-                                      </Button> */}
+                                     
+                                     
                                     </div>
                                   ))
                                 ) : (
@@ -225,14 +288,14 @@ const SignUp = () => {
                                     type="button"
                                     onClick={() => arrayHelpers.push("")}
                                   >
-                                    {/* show this when user has removed all addImages from the list */}
+                                   
                                     Add Images
                                   </button>
                                 )}
                               </div>
                             )}
                           />
-                        </Grid>
+                        </Grid>  */}
 
                         {/* ------------------------------fieldArray code end here------------------------------------- */}
 
