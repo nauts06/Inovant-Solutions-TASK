@@ -22,6 +22,7 @@ app.use(cors())
 //routes
 // app.use('/api',routes)
 // app.use('/api/users',userRoutes)
+app.use('/user',require('./routes/user'))
 
 
 app.listen(5000,()=>{

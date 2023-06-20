@@ -1,16 +1,19 @@
-const { default: mongoose } = require("mongoose")
-const moongoose = require("mongoose")
+const { default: mongoose } = require("mongoose");
+const moongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    name:{
-        type:String
-    },
-    price:{
-        type:Number
-    },
-    cloudinary_id:{
-        type:String
-    }
-})
+  name: {
+    type: String,
+  },
+  price: {
+    type: Number,
+  },
+  addImages: {
+    type: String,
+  },
+  cloudinary_id: {
+    type: String,
+  },
+});
 
-module.exports = moongoose.model("User",userSchema)
+module.exports = moongoose.model("User", userSchema);
