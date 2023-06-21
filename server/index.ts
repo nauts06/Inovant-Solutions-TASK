@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const dbConnection = require("./config/DB")
+const dbConnectionTs = require("./config/DB")
 const cors = require("cors")
 const routes = require('./routes/routes')
 const express = require("express")
@@ -10,7 +10,7 @@ const path = require("path")
 
 const PORT = 9000 || 3000
 // database start
-dbConnection()
+dbConnectionTs()
 
 
 //middleware

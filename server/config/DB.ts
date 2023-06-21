@@ -14,7 +14,7 @@ const dbConnection = () => {
   mongoose.connect(mongoString);
   const database = mongoose.connection;
   console.log(mongoString);
-  database.on("error", (error) => {
+  database.on("error", (error:any) => {
     console.log(error);
   });
 
