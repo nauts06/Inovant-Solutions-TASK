@@ -9,7 +9,7 @@ const HomePage = () => {
   const [listing, setListing] = useState([]);
   const [editData, setEditData] = useState({});
 
-  useEffect(() => {
+  const getAllData = () => {
     axios
       .get("http://localhost:9000/api/getAll")
       .then((response) => {
@@ -19,7 +19,22 @@ const HomePage = () => {
       .catch((error) => {
         console.log("error", error);
       });
+  };
+
+  useEffect(() => {
+    getAllData();
   }, []);
+
+  const deleteListItem = (id) => {
+    axios
+      .delete(`http://localhost:9000/api/delete/${id}`)
+      .then((response) => {
+        getAllData();
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
 
   return (
     <div className="bg-gray-400 h-screen">
@@ -34,18 +49,25 @@ const HomePage = () => {
           return (
             <div className="w-[90%] mt-4  m-auto">
               <div className="card card-side bg-base-100 shadow-xl ">
-                <figure>
-                  <img src={elem?.addImages1} alt="Movie" className="w-[90%]" />
-                </figure>
-                <figure>
-                  <img src={elem?.addImages2} alt="Movie" className="w-[90%]" />
-                </figure>
-                <figure>
-                  <img src={elem?.addImages3} alt="Movie" className="w-[90%]"/>
-                </figure>
-                <figure>
-                  <img src={elem?.addImages4} alt="Movie" className="w-[90%]" />
-                </figure>
+                <div className="w-[80%] grid grid-cols-4 gap-4">
+                  <div>
+                    <img
+                      src={elem?.addImages1}
+                      alt="Movie"
+                      className="ml-2 py-6"
+                    />
+                  </div>
+                  <div>
+                    <img src={elem?.addImages2} alt="Movie" className="py-6" />
+                  </div>
+                  <div>
+                    <img src={elem?.addImages3} alt="Movie" className="py-6" />
+                  </div>
+                  <div>
+                    <img src={elem?.addImages4} alt="Movie" className="py-6" />
+                  </div>
+                </div>
+
                 <div className="card-body">
                   <div className="card-actions grid gap-2 grid-cols-2">
                     <button
@@ -54,10 +76,15 @@ const HomePage = () => {
                     >
                       Edit
                     </button>
-                    <button className="btn btn-sm btn-error">Delete</button>
+                    <button
+                      className="btn btn-sm btn-error"
+                      onClick={() => deleteListItem(elem?._id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                   <h2 className="card-title">{elem?.name}</h2>
-                 
+
                   <div className="card-actions justify-end">
                     <button className="btn btn-primary">₹ {elem?.price}</button>
                   </div>

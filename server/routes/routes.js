@@ -43,7 +43,7 @@ router.get("/getOne/:id", async (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
-  }
+  } 
 });
 
 //Update by ID Method
