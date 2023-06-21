@@ -37,7 +37,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-gray-400 h-screen">
+    <div>
       {/* -------------------------navbar starts here--------------------- */}
       <div>
         <Navbar />
@@ -47,29 +47,71 @@ const HomePage = () => {
       <div>
         {listing.map((elem) => {
           return (
-            <div className="w-[90%] mt-4  m-auto">
-              <div className="card card-side bg-base-100 shadow-xl ">
-                <div className="w-[80%] grid grid-cols-4 gap-4">
-                  <div>
+            <div className="h-full w-[90%] mt-4  m-auto  ">
+              <div className="card card-side bg-base-100 shadow-xl  ">
+                <div className="w-[80%] grid grid-cols-4 gap-4 bg-base-200 ">
+                  <div
+                    className="py-2 m-auto   bg-base-200" 
+                    style={{ height: "220px", width: "220px" }}
+                  >
                     <img
                       src={elem?.addImages1}
                       alt="Movie"
-                      className="ml-2 py-6"
+                      className="ml-2 "
+                      style={{
+                        // border: "solid 6px black",
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
                   </div>
-                  <div>
-                    <img src={elem?.addImages2} alt="Movie" className="py-6" />
+
+                  <div
+                    className="py-2 m-auto  bg-base-200" 
+                    style={{ height: "220px", width: "220px" }}
+                  >
+                    <img
+                      src={elem?.addImages2}
+                      alt="Movie"
+                      style={{
+                        // border: "solid 6px black",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
                   </div>
-                  <div>
-                    <img src={elem?.addImages3} alt="Movie" className="py-6" />
+                  <div
+                    className="py-2 m-auto  bg-base-200" 
+                    style={{ height: "220px", width: "220px" }}
+                  >
+                    <img
+                      src={elem?.addImages3}
+                      alt="Movie"
+                      style={{
+                        // border: "solid 6px black",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
                   </div>
-                  <div>
-                    <img src={elem?.addImages4} alt="Movie" className="py-6" />
+                  <div
+                    className="py-2 m-auto  bg-base-200" 
+                    style={{ height: "220px", width: "220px" }}
+                  >
+                    <img
+                      src={elem?.addImages4}
+                      alt="Movie"
+                      style={{
+                        // border: "solid 6px black",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
                   </div>
                 </div>
 
-                <div className="card-body">
-                  <div className="card-actions grid gap-2 grid-cols-2">
+                <div className="card-body w-[25%] bg-base-200">
+                  <div className="card-actions grid gap-2 grid-cols-2 ">
                     <button
                       className="btn btn-sm btn-neutral"
                       onClick={() => navigate(`/signup/${elem?._id}`)}
@@ -83,10 +125,14 @@ const HomePage = () => {
                       Delete
                     </button>
                   </div>
-                  <h2 className="card-title">{elem?.name}</h2>
+                  <h2 className="card-title text-center mt-8 m-auto">
+                    {elem?.name}
+                  </h2>
 
-                  <div className="card-actions justify-end">
-                    <button className="btn btn-primary">₹ {elem?.price}</button>
+                  <div className="card-actions justify-center">
+                    <button className="btn btn-primary  w-40">
+                      ₹ {elem?.price}
+                    </button>
                   </div>
                 </div>
               </div>

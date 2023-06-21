@@ -65,7 +65,7 @@ const SignUp = () => {
     }, 1000);
   }, []);
 
-  const handleImage = (event:any, setFieldValue:any) => {
+  const handleImage = (event: any, setFieldValue: any) => {
     const preset_key = "hrzxc8tv";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -89,7 +89,7 @@ const SignUp = () => {
         console.log(error);
       });
   };
-  const handleImage2 = (event:any, setFieldValue:any) => {
+  const handleImage2 = (event: any, setFieldValue: any) => {
     const preset_key = "gyq8juvu";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -114,7 +114,7 @@ const SignUp = () => {
       });
   };
 
-  const handleImage3 = (event:any, setFieldValue:any) => {
+  const handleImage3 = (event: any, setFieldValue: any) => {
     const preset_key = "h2f3sheq";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -138,7 +138,7 @@ const SignUp = () => {
         console.log(error);
       });
   };
-  const handleImage4 = (event:any, setFieldValue:any) => {
+  const handleImage4 = (event: any, setFieldValue: any) => {
     const preset_key = "swmqmwpy";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -163,12 +163,12 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="bg-neutral h-screen">
+    <div className="bg-neutral h-full ">
       <div className="text-[34px] text-center text-base-100 ">
-        Add Products Here
+        <label className="mt-7"> Add Products Here</label>
       </div>
 
-      <div className="card w-[90%]  bg-base-100 shadow-xl m-auto">
+      <div className="card w-[90%]  bg-base-100 shadow-xl m-auto mt-5 mb-10">
         <div className="card-body">
           <div className="flex justify-end ">
             <button
@@ -292,10 +292,72 @@ const SignUp = () => {
                           </Grid>
                         </Grid>
                         <Grid item xs={12} md={3}>
-                          <img src={image} alt="" className="w-[30%]" />
-                          <img src={image2} alt="" className="w-[30%]  mt-1" />
-                          <img src={image3} alt="" className="w-[30%]  mt-1" />
-                          <img src={image4} alt="" className="w-[30%]  mt-1" />
+                          <div
+                            style={{
+                              height: "60px",
+                              width: "60px",
+
+                              marginTop: "2%",
+                            }}
+                          >
+                            <img
+                              src={image}
+                              alt="add image"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              height: "60px",
+                              width: "60px",
+                              marginTop: "2%",
+                            }}
+                          >
+                            <img
+                              src={image2}
+                              alt="add image"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              height: "60px",
+                              width: "60px",
+                              marginTop: "2%",
+                            }}
+                          >
+                            {" "}
+                            <img
+                              src={image3}
+                              alt="add image"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              height: "60px",
+                              width: "60px",
+                              marginTop: "2%",
+                            }}
+                          >
+                            <img
+                              src={image4}
+                              alt="add image"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
                         </Grid>
 
                         {/* -------------------------------------without fieldarray code till here------------------------------------------------ */}

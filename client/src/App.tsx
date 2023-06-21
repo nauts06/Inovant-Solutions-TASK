@@ -3,7 +3,7 @@ import RoutesL from "./routes/Routes";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-gray-400 h-screen">
       <RoutesL />
     </div>
   );
