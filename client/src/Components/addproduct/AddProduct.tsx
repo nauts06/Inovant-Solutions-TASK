@@ -60,12 +60,12 @@ const SignUp = () => {
   }, []);
 
   useEffect(() => {
-     setTimeout(() => {
-      // setFdata(false);
-    }, "1000");
+    setTimeout(() => {
+      console.log("i am working");
+    }, 1000);
   }, []);
 
-  const handleImage = (event, setFieldValue) => {
+  const handleImage = (event:any, setFieldValue:any) => {
     const preset_key = "hrzxc8tv";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -89,7 +89,7 @@ const SignUp = () => {
         console.log(error);
       });
   };
-  const handleImage2 = (event, setFieldValue) => {
+  const handleImage2 = (event:any, setFieldValue:any) => {
     const preset_key = "gyq8juvu";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -114,7 +114,7 @@ const SignUp = () => {
       });
   };
 
-  const handleImage3 = (event, setFieldValue) => {
+  const handleImage3 = (event:any, setFieldValue:any) => {
     const preset_key = "h2f3sheq";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -138,7 +138,7 @@ const SignUp = () => {
         console.log(error);
       });
   };
-  const handleImage4 = (event, setFieldValue) => {
+  const handleImage4 = (event:any, setFieldValue:any) => {
     const preset_key = "swmqmwpy";
     const cloud_name = "dwgp5uejr";
     console.log("asdfghj", event.target.files[0]);
@@ -220,7 +220,6 @@ const SignUp = () => {
                   errors,
                   touched,
                   handleReset,
-                  handleSelect,
                   handleChange,
                   setFieldValue,
                 }) => {
@@ -341,8 +340,8 @@ const SignUp = () => {
                         </Grid>  */}
 
                         {/* ------------------------------fieldArray code end here------------------------------------- */}
-
-                        <div mt={2} mb={2} textAlign="center">
+                        {/* mt={2}  */}
+                        <div className="mt-2 mb={2} text-center">
                           <h6
                             style={{
                               fontSize: ".8em",
@@ -359,7 +358,7 @@ const SignUp = () => {
                           <button
                             className="btn btn-primary"
                             type="submit"
-                            fullWidth
+                            // fullWidth
                           >
                             Save Information
                           </button>

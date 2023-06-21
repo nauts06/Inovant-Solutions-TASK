@@ -6,7 +6,7 @@ import axios from "axios";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [listing, setListing] = useState([]);
+  const [listing, setListing] = useState<any[]>([]);
   const [editData, setEditData] = useState({});
 
   const getAllData = () => {
@@ -25,7 +25,7 @@ const HomePage = () => {
     getAllData();
   }, []);
 
-  const deleteListItem = (id) => {
+  const deleteListItem = (id: any) => {
     axios
       .delete(`http://localhost:9000/api/delete/${id}`)
       .then((response) => {
