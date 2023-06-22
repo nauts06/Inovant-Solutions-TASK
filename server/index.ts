@@ -8,7 +8,7 @@ const app = express()
 const helmet =  require("helmet")
 const path = require("path")
 
-const PORT = 9000 || 3000
+
 // database start
 dbConnectionTs()
 
@@ -48,8 +48,8 @@ app.use('/api',routes)
 
 
 
-app.listen(PORT,()=>{
-  console.log("server is running on ", PORT);
+app.listen(process.env.PORT || 4000,()=>{
+  console.log("server is running on ", process.env.PORT || 4000);
 })
 
 
