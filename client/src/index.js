@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 // import { store } from './store';
 
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
