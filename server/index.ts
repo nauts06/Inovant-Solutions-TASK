@@ -20,14 +20,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", routes);
 
 // Serve static files from the "public" folder
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
-
+app.use(express.static(path.join(__dirname, 'public')));
 //routes
 app.use('/api',routes)
+
+app.get('/*', (req:any, res:any) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+
 
 
 
