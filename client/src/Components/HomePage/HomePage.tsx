@@ -11,7 +11,7 @@ const HomePage = () => {
 
   const getAllData = () => {
     axios
-      .get("http://localhost:9000/api/getAll")
+      .get("/api/getAll")
       .then((response) => {
         console.log("response", response);
         setListing(response.data);
@@ -27,7 +27,7 @@ const HomePage = () => {
 
   const deleteListItem = (id: any) => {
     axios
-      .delete(`http://localhost:9000/api/delete/${id}`)
+      .delete(`/api/delete/${id}`)
       .then((response) => {
         getAllData();
       })
@@ -51,7 +51,7 @@ const HomePage = () => {
               <div className="card card-side bg-base-100 shadow-xl  ">
                 <div className="w-[80%] grid grid-cols-4 gap-4 bg-base-200 ">
                   <div
-                    className="py-2 m-auto   bg-base-200" 
+                    className="py-2 m-auto   bg-base-200"
                     style={{ height: "220px", width: "220px" }}
                   >
                     <img
@@ -67,7 +67,7 @@ const HomePage = () => {
                   </div>
 
                   <div
-                    className="py-2 m-auto  bg-base-200" 
+                    className="py-2 m-auto  bg-base-200"
                     style={{ height: "220px", width: "220px" }}
                   >
                     <img
@@ -81,7 +81,7 @@ const HomePage = () => {
                     />
                   </div>
                   <div
-                    className="py-2 m-auto  bg-base-200" 
+                    className="py-2 m-auto  bg-base-200"
                     style={{ height: "220px", width: "220px" }}
                   >
                     <img
@@ -95,7 +95,7 @@ const HomePage = () => {
                     />
                   </div>
                   <div
-                    className="py-2 m-auto  bg-base-200" 
+                    className="py-2 m-auto  bg-base-200"
                     style={{ height: "220px", width: "220px" }}
                   >
                     <img

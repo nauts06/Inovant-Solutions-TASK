@@ -34,7 +34,7 @@ const SignUp = () => {
 
   const handleEditSet = async () => {
     await axios
-      .get(`http://localhost:9000/api/getOne/${editId.id}`)
+      .get(`/api/getOne/${editId.id}`)
       .then((response) => {
         setFdata(true);
         initialValues.addImages1 = response?.data?.addImages1;
@@ -191,7 +191,7 @@ const SignUp = () => {
 
                   if (first === false) {
                     axios
-                      .post("http://localhost:9000/api/post", values)
+                      .post("/api/post", values)
                       .then((response) => {
                         console.log("valueskk", response);
                         navigate("/");
@@ -202,7 +202,7 @@ const SignUp = () => {
                   } else {
                     axios
                       .patch(
-                        `http://localhost:9000/api/update/${editId.id}`,
+                        `/api/update/${editId.id}`,
                         values
                       )
                       .then((response) => {
